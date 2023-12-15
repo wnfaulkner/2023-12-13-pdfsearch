@@ -1,14 +1,15 @@
 # SERIALIZERS
 
 from rest_framework import serializers 
-from main_app.models import UserProfile, Pdfs 
+from main_app.models import UserProfiles, Pdfs 
 
-class UserProfileSerializer(serializers.ModelSerializer):
+class UserProfilesSerializer(serializers.ModelSerializer):
 
   class Meta:
-    model = UserProfile
+    model = UserProfiles
     fields = (
-      'username'
+      'user',
+      'username',
     )
 
 class PdfSerializer(serializers.ModelSerializer):
@@ -21,5 +22,6 @@ class PdfSerializer(serializers.ModelSerializer):
       'year',
       'publication',
       'url',
+      'user_profile',
     )
 

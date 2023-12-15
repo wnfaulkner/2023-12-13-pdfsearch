@@ -20,7 +20,8 @@ from rest_framework import routers
 from main_app import views
 
 router = routers.DefaultRouter()
-router.register(r'pdfs', views.PdfView, 'pdf')
+router.register(r'pdfs', views.PdfView, 'pdfs')
+router.register(r'userprofiles', views.UserProfilesView, 'userprofile')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
