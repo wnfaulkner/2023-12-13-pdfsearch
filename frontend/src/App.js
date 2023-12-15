@@ -7,12 +7,14 @@ import { Routes, Route } from 'react-router-dom';
 import axios from 'axios'
 // import { getUser, getToken } from '../../utilities/users-service';
 
-import NavBar from './components/A-NavBar/NavBar.jsx';
+import NavBar from './components/A3-NavBar/NavBar.jsx';
+import AuthPage from './pages/AuthPage/AuthPage.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import PdfsPage from './pages/PdfsPage/PdfsPage.jsx';
 
 function App() {
-
+  const user = null
+  // const [user, setUser] = useState(getUser)
   const [pdfsList, setPdfsList] = useState([])
 
   const fetchPdfs = async function () {
@@ -40,14 +42,20 @@ function App() {
   }, []); 
 
   return (
-    <div className="App">
-      <NavBar />
-      &nbsp;
-      <Routes >
-        <Route path="/home" element={ <HomePage /> } />
-        <Route path="/pdfs" element={ <PdfsPage pdfsList={ pdfsList } /> } />
-      </Routes>
-    </div>
+    <main className="App">
+      { user ?
+        <>
+          <NavBar />
+          &nbsp;
+          <Routes >
+            <Route path="/home" element={ <HomePage /> } />
+            <Route path="/pdfs" element={ <PdfsPage pdfsList={ pdfsList } /> } />
+          </Routes>
+        </>
+        :
+        <AuthPage />
+      }
+    </main>
   );
 }
 
