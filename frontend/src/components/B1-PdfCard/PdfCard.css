@@ -1,0 +1,10 @@
+/* PDF CARD CSS */
+
+#pdf-card{
+  display: flex;
+  border: 1px solid grey;
+}
+
+.pdf-icon {
+  width: 80px;
+}

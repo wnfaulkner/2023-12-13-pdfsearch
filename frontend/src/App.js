@@ -7,12 +7,13 @@ import { Routes, Route } from 'react-router-dom';
 import axios from 'axios'
 // import { getUser, getToken } from '../../utilities/users-service';
 
-import NavBar from './components/NavBar/NavBar';
-// import HomePage from './pages/HomePage/HomePage.jsx';
+import NavBar from './components/A-NavBar/NavBar.jsx';
+import HomePage from './pages/HomePage/HomePage.jsx';
 import PdfsPage from './pages/PdfsPage/PdfsPage.jsx';
 
 function App() {
-  const [pdfList, setPdfList] = useState([])
+
+  const [pdfsList, setPdfsList] = useState([])
 
   const fetchPdfs = async function () {
     try {
@@ -30,7 +31,7 @@ function App() {
     fetchPdfs()
       .then((userPdfs) => {
         // console.log(userPdfs); // Log here to verify the data
-        setPdfList(userPdfs);
+        setPdfsList(userPdfs);
       })
       .catch((error) => {
         // Handle errors here if needed
@@ -41,8 +42,10 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      &nbsp;
       <Routes >
-        <Route path="/pdfs" element={ <PdfsPage pdfList={ pdfList } /> } />
+        <Route path="/home" element={ <HomePage /> } />
+        <Route path="/pdfs" element={ <PdfsPage pdfsList={ pdfsList } /> } />
       </Routes>
     </div>
   );

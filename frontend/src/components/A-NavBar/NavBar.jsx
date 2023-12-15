@@ -1,15 +1,20 @@
-// NAV BAR FOR MOBILE VIEW
+// NAV BAR
 
 // import { Link } from 'react-router-dom';
 // import Logo from '../../images/Logo/Logo.png';
 // import IconProfile from '../../images/icons/IconProfile/IconProfile.png';
+import './NavBar.css'
 
 export default function NavBar() {
 
   return (
-    <nav>
+    <nav id="navbar">
+      <a href="/home" className="navbar-brand">
+        Home
+      </a>
+      &nbsp;&nbsp;&nbsp;
       <a href="/pdfs" className="navbar-brand">
-        My PDFs
+        PDFs
       </a>
     </nav>
   );

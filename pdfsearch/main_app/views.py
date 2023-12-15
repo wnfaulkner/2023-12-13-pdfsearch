@@ -1,6 +1,8 @@
 # MAIN APP VIEWS
 
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 
 from rest_framework import viewsets, status
@@ -22,6 +24,18 @@ class UserProfilesView(viewsets.ModelViewSet):
 
 # def home(request):
   # return render(request, 'home.html')
+
+@csrf_exempt
+def user_data(request):
+    user = request.user
+    try:
+        user_profile = UserProfiles.objects.get(user=user)
+        data = {
+            'username': user.username,
+        }
+        return JsonResponse(data)
+    except UserProfiles.DoesNotExist:
+        return JsonResponse({'error': 'User profile not found'}, status=400)
 
 @api_view(['GET', 'POST', 'DELETE'])
 def pdfs_index(request):

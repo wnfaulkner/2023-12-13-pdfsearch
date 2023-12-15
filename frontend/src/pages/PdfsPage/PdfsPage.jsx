@@ -1,25 +1,34 @@
 // PDFS PAGE
 
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import './PdfsPage.css'
 
-export default function PdfsPage({ pdfList }) {
-  useEffect(() => {
-    console.log(pdfList);
-  }, [pdfList]);
+// import { useEffect, useState } from 'react';
+// import { Link } from 'react-router-dom';
 
-  if (pdfList === undefined) {
+import UploadInterface from '../../components/C-UploadInterface/UploadInterface.jsx';
+import SearchInterface from '../../components/D-SearchInterface/SearchInterface.jsx';
+import PdfsList from '../../components/B-PdfsList/PdfsList.jsx';
+
+export default function PdfsPage({ pdfsList }) {
+  // useEffect(() => {
+  //   console.log(pdfList);
+  // }, [pdfList]);
+
+  if (pdfsList === undefined) {
     // Render a loading state or return null
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      {pdfList.map((pdf) => (
-        <div key={pdf.id}>
-          <p>Title: {pdf.title}</p>
-        </div>
-      ))}
+    <div id='pdfs-page'>
+      <aside id="tools">
+        <UploadInterface />
+        <SearchInterface />
+      </aside>
+      &nbsp;
+      <div id="pdf-list">
+        <PdfsList pdfsList={pdfsList} />
+      </div>
     </div>
   );
 }

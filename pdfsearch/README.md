@@ -12,10 +12,9 @@ PDF Search helps users store, organize, and search their pdf documents.
 ---
 ## **Technology Stack**
 
-Database: MongoDB
+Database: PostgreSQL
 
 Back-End: Django
-- Communicate with database: PyMongo
 - Communicate with React front-end: Django REST Framework
 - Doc Indexing & Metadata Extraction: Apache Tika
 - Doc Searching: Apache Solr

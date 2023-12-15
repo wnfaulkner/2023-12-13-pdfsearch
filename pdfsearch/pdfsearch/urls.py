@@ -21,7 +21,7 @@ from main_app import views
 
 router = routers.DefaultRouter()
 router.register(r'pdfs', views.PdfView, 'pdfs')
-router.register(r'userprofiles', views.UserProfilesView, 'userprofile')
+router.register(r'userprofile', views.UserProfilesView, 'userprofile')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

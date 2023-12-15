@@ -1,0 +1,11 @@
+/* PDFS PAGE CSS */
+
+/* #pdfs-page {
+  display: flex;
+} */
+
+#tools {
+  float: left;
+  width: 15vw;
+  height: 100vh;
+}
