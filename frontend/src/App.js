@@ -13,7 +13,7 @@ import HomePage from './pages/HomePage/HomePage.jsx';
 import PdfsPage from './pages/PdfsPage/PdfsPage.jsx';
 
 function App() {
-  const user = null
+  const user = 'w'
   // const [user, setUser] = useState(getUser)
   const [pdfsList, setPdfsList] = useState([])
 

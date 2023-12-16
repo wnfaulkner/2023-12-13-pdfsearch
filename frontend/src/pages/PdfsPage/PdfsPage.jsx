@@ -15,15 +15,14 @@ export default function PdfsPage({ pdfsList }) {
   // }, [pdfList]);
 
   if (pdfsList === undefined) {
-    // Render a loading state or return null
-    return <div>Loading...</div>;
+    return <div>Loading...</div>; // Render a loading state or return null
   }
 
   return (
     <div id='pdfs-page'>
       <aside id="tools">
-        <UploadInterface />
-        <SearchInterface />
+        <UploadInterface pdfsList={ pdfsList } />
+        <SearchInterface pdfsList={ pdfsList } />
       </aside>
       &nbsp;
       <div id="pdf-list">
