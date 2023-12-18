@@ -4,3 +4,10 @@
   background-color: grey;
   border: 1px violet solid
 }
+
+#upload-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}

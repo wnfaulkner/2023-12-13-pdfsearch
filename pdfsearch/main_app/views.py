@@ -40,7 +40,9 @@ def user_data(request):
 @api_view(['GET', 'POST', 'DELETE'])
 def pdfs_index(request):
   if request.method == 'POST':
+    print('RECEIVED POST REQUEST:')
     pdfs_data = JSONParser().parse(request)
+    print(pdfs_data)
     pdfs_serializer = PdfSerializer(data=pdfs_data)
   
   if pdfs_serializer.is_valid():

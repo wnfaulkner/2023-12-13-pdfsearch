@@ -9,24 +9,18 @@ import UploadInterface from '../../components/C-UploadInterface/UploadInterface.
 import SearchInterface from '../../components/D-SearchInterface/SearchInterface.jsx';
 import PdfsList from '../../components/B-PdfsList/PdfsList.jsx';
 
-export default function PdfsPage({ pdfsList }) {
-  // useEffect(() => {
-  //   console.log(pdfList);
-  // }, [pdfList]);
-
-  if (pdfsList === undefined) {
-    return <div>Loading...</div>; // Render a loading state or return null
-  }
+export default function PdfsPage( props ) {
+  const { pdfsList, updatePdfsList } = props;
 
   return (
     <div id='pdfs-page'>
       <aside id="tools">
-        <UploadInterface pdfsList={ pdfsList } />
+        <UploadInterface pdfsList={pdfsList} updatePdfsList={ updatePdfsList} />
         <SearchInterface pdfsList={ pdfsList } />
       </aside>
       &nbsp;
       <div id="pdf-list">
-        <PdfsList pdfsList={pdfsList} />
+        <PdfsList pdfsList={ pdfsList } />
       </div>
     </div>
   );

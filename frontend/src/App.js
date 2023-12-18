@@ -13,33 +13,27 @@ import HomePage from './pages/HomePage/HomePage.jsx';
 import PdfsPage from './pages/PdfsPage/PdfsPage.jsx';
 
 function App() {
+
   const user = 'w'
   // const [user, setUser] = useState(getUser)
   const [pdfsList, setPdfsList] = useState([])
 
-  const fetchPdfs = async function () {
+  const updatePdfsList = async function () {
     try {
       const response = await axios.get(
         "http://localhost:8000/api/pdfs/"
-      )
-      return response.data
-    } catch(error) {
+      );
+      console.log(response.data)
+      setPdfsList(response.data);
+    } catch (error) {
       console.error('Error fetching data from backend:', error);
       throw error;
     }
-  }
+  };
 
   useEffect(() => {
-    fetchPdfs()
-      .then((userPdfs) => {
-        // console.log(userPdfs); // Log here to verify the data
-        setPdfsList(userPdfs);
-      })
-      .catch((error) => {
-        // Handle errors here if needed
-        console.error('Error in useEffect fetching user pdfs:', error);
-      });
-  }, []); 
+    updatePdfsList();
+  }, []);
 
   return (
     <main className="App">
@@ -49,7 +43,11 @@ function App() {
           &nbsp;
           <Routes >
             <Route path="/home" element={ <HomePage /> } />
-            <Route path="/pdfs" element={ <PdfsPage pdfsList={ pdfsList } /> } />
+            <Route path="/pdfs" 
+              element={ 
+                <PdfsPage pdfsList={pdfsList} updatePdfsList={ updatePdfsList } /> 
+              } 
+            />
           </Routes>
         </>
         :

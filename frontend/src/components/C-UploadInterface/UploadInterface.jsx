@@ -5,56 +5,65 @@ import './UploadInterface.css'
 import { useState, useEffect } from 'react'
 import API from '../../API.js'
 
-export default function UploadInterface (props) {
+export default function UploadInterface ( props ) {
 
-  const [filePath, setFilePath] = useState('')
+  // console.log(props)
+  const { pdfsList, updatePdfsList } = props;
   const [title, setTitle] = useState('')
   const [year, setYear] = useState('')
   const [publication, setPublication] = useState('')
-  const [url, setUrl] = useState('')
-  const [pdfsList, setPdfsList] = useState(props.pdfsList)
+  // const [pdfsList, setPdfsList] = useState(pdfsList)
 
-  useEffect(() => {
-    refreshPdfsList()
-  }, [])
+  // useEffect(() => {
+  //   fetchPdfs()
+  //     .then((userPdfs) => {
+  //       // console.log(userPdfs); // Log here to verify the data
+  //       setPdfsList(userPdfs);
+  //     })
+  //     .catch((error) => {
+  //       // Handle errors here if needed
+  //       console.error('Error in useEffect fetching user pdfs:', error);
+  //     });
+  // }, []); 
 
-  const refreshPdfsList = () => { //Could also modify useEffect in App to have dependency array refresh based on pdfList object, and then wouldn't need this function.
-    API.get("/")
-    .then((res) => {
-      setPdfsList(res.data)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
+  // const refreshPdfsList = async function () { //Could also modify useEffect in App to have dependency array refresh based on pdfList object, and then wouldn't need this function.
+  //   await const response = API.get("/")
+    
+  //     setPdfsList(res.data)
+  //   })
+  //   .catch((err) => {
+  //     console.log(err)
+  //   })
+  // }
 
   const onSubmit = (e) => {
+    // const user = props.user
+
     e.preventDefault()
     let newPdf = {
-      filePath,
       title, 
       year,
       publication,
-      url
+      // user,
     }
-    console.log(newPdf)
-    API.post("/", newPdf).then(() => refreshPdfsList())
+    // console.log(newPdf)
+    API.post("/", newPdf).then(updatePdfsList)
   }
 
-  const onUpdate = (id) => {
-    let updatedPdf = {
-      filePath,
-      title, 
-      year,
-      publication,
-      url
-    }
-    API.patch(`/${id}/`, updatedPdf).then((res) => refreshPdfsList())
-  }
+  // EVENTUALLY WOULD BE NICE TO HAVE FULL PDF CRUD. WILL HAVE TO UPDATE FRONT END COMPONENTS TO HAVE AN EDIT PANE. FOLLOW THIS LESSON: https://generalassembly.zoom.us/rec/play/YjwPSuSAe_sUlwIQFcbXlXdSBp1Ul3RT33-c325oMAcG9-KQhf28dCElMW3nKznqbQrVS6e4liEu-aGF.xjF5qfIeu_jzjSWr?autoplay=true&canPlayFromShare=true&componentName=rec-play&continueMode=true&from=share_recording_detail&originRequestUrl=https%3A%2F%2Fgeneralassembly.zoom.us%2Frec%2Fshare%2F5oHfqJZh25AeK1IVCFm_UO5DB_poGh5WRIfqH2KZ5Ey8oDmRkaooVCPykDjuXzGR.heRmibE01scgoRNd&startTime=1684524960000
+  // const onUpdate = (id) => {
+  //   let updatedPdf = {
+  //     title, 
+  //     year,
+  //     publication,
+  //     // user,
+  //   }
+  //   API.patch(`/${id}/`, updatedPdf).then((res) => refreshPdfsList())
+  // }
 
-  const onDelete = (id) => {
-      API.delete(`/${id}/`).then((res) => refreshPdfsList())
-  }
+  // const onDelete = (id) => {
+  //     API.delete(`/${id}/`).then((res) => refreshPdfsList())
+  // }
 
   // const selectPdf = (id) => {
   //     let pdf = pdfList.filter((pdf) => pdf.id === id)[0]
@@ -67,14 +76,7 @@ export default function UploadInterface (props) {
   return(
     <div id='upload-interface'>
       UPLOAD INTERFACE
-      <form>
-        <input 
-          value={filePath}
-          onChange={e=> setFilePath(e.target.value)}
-          placeholder={'filePath'}
-          type='text'
-          name='filePath'
-        />
+      <form id='upload-form'>
         <input 
           value={title}
           onChange={e=> setTitle(e.target.value)}
@@ -95,13 +97,6 @@ export default function UploadInterface (props) {
           placeholder={'publication'}
           type='text'
           name='publication'
-        />
-        <input 
-          value={url}
-          onChange={e=> setUrl(e.target.value)}
-          placeholder={'url'}
-          type='text'
-          name='url'
         />
       </form>
       <button onClick={onSubmit}> Upload </ button>

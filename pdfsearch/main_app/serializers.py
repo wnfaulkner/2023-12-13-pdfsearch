@@ -17,11 +17,9 @@ class PdfSerializer(serializers.ModelSerializer):
   class Meta:
     model = Pdfs
     fields = (
-      'file_path',
       'title',
       'year',
       'publication',
-      'url',
-      'user_profile',
+      # 'user',
     )
 

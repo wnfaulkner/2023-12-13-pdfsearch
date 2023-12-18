@@ -49,25 +49,25 @@ Stretch Goals include implementing further user stories, such as:
 ---
 ## **ERD**
 
-<img src="./public/images/ERD.png" alt="ERD" width="350"/>
+<img src="./pdfsearch/public/images/ERD.png" alt="ERD" width="350"/>
 
 ---
 ## **Routing Chart**
 
-<img src="./public/images/RESTful Routing Chart.png" alt="RESTful Routing Chart" width="700"/>
+<img src="./pdfsearch/public/images/RESTful Routing Chart.png" alt="RESTful Routing Chart" width="700"/>
 
 ---
 ## **Wireframes**
 
-![Landing Page Wireframe](./public/images/wireframes/Slide1.PNG)
+![Landing Page Wireframe](./pdfsearch/public/images/wireframes/Slide1.PNG)
 
-![User Home Wireframe](./public/images/wireframes/Slide2.PNG)
+![User Home Wireframe](./pdfsearch/public/images/wireframes/Slide2.PNG)
 
-![Import/Index Wireframe](./public/images/wireframes/Slide3.PNG)
+![Import/Index Wireframe](./pdfsearch/public/images/wireframes/Slide3.PNG)
 
-![Search Wireframe (no query)](./public/images/wireframes/Slide4.PNG)
+![Search Wireframe (no query)](./pdfsearch/public/images/wireframes/Slide4.PNG)
 
-![Search Wireframe (with query)](./public/images/wireframes/Slide5.PNG)
+![Search Wireframe (with query)](./pdfsearch/public/images/wireframes/Slide5.PNG)
 
 
 ---
