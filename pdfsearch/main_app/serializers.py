@@ -4,7 +4,6 @@ from rest_framework import serializers
 from main_app.models import UserProfiles, Pdfs 
 
 class UserProfilesSerializer(serializers.ModelSerializer):
-
   class Meta:
     model = UserProfiles
     fields = (
@@ -13,7 +12,6 @@ class UserProfilesSerializer(serializers.ModelSerializer):
     )
 
 class PdfSerializer(serializers.ModelSerializer):
-
   class Meta:
     model = Pdfs
     fields = (
